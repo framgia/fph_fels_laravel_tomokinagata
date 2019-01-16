@@ -19,7 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//temporary
+//temporary dashoboard page rooting
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+//temporary admin_add_category page rooting
+Route::get('/admin_add_category', function () {
+    return view('admin.addCategory');
+});
+
+//temporary rooting for admin to add category 
+Route::post('/create_category', 'CategoryController@create');
+
+
+
