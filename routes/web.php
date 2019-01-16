@@ -41,3 +41,6 @@ Route::get('/admin/word/edit/{word}', 'WordController@edit');
 Route::post('/admin/word/update', 'WordController@update');
 Route::get('/admin/word/delete/{word}', 'WordController@delete');
 
+//User RD functions for Admin
+Route::get('/admin/user', 'UserController@index');
+Route::get('/admin/user/delete/{user}', 'UserController@delete');

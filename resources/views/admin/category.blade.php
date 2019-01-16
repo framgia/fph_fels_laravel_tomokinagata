@@ -25,7 +25,7 @@
                       <td>
                           <a href="{{ action('WordController@add', $category) }}">Add word</a> | 
                           <a href="{{ action('CategoryController@edit', $category) }}">Edit</a> | 
-                          <a href="{{ action('CategoryController@delete', $category)  }}"  onclick="return confirm('Are you sure?')">Delete</a>
+                          <a href="{{ action('CategoryController@delete', $category) }}" onclick="return confirm('Are you sure?')">Delete</a>
                       </td>
                   </tr>
                @endforeach
