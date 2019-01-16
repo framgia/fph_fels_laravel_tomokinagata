@@ -18,7 +18,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->create($request);
-        return redirect('admin/category')->with('success', 'New category is created successfully.');
+        return redirect('admin/category')->with('Success', 'New category is created successfully.');
     }
 
     public function edit(Category $category)
@@ -29,12 +29,12 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->updateCategory($request);
-        return redirect('/admin/category')->with('success', 'The category is updated successfully.');
+        return redirect('/admin/category')->with('Success', 'The category is updated successfully.');
     }
 
     public function delete(Category $category)
     {
         $category->delete();
-        return redirect('/admin/category')->with('success', 'The category is deleted successfully.');
+        return redirect('/admin/category')->with('Success', 'The category is deleted successfully.');
     }
 }

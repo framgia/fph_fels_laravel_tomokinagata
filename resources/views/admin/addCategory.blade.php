@@ -9,7 +9,7 @@
     <div class="col-9 mx-auto">
         <form method="post" action="{{ action('CategoryController@create') }}">
             {{csrf_field()}}
-            <h3 class="mb-3">Add category</h3>
+            <h3 class="mb-5">Add category</h3>
             <h5>Title</h5>
             <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }} mb-4 col-12" name="title" value="{{ old('title') }}" maxlength="20" required>
             <h5>Description</h5>
