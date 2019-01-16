@@ -10,24 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
+//for User
 Route::get('/', function () {
     return view('home');
 });
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+Route::get('/category', 'LessonController@lessonIndex');
+Route::get('/category/lesson/{category}/{page_number}/{correct}', 'LessonController@lessonAnswer')->name('lessonAnswer');
+Route::get('/category/lesson/{category}/{page_number}/{correct}/result', 'LessonController@lessonResult')->name('lessonResult');
 
 //Category CRUD functions for Admin
 Route::get('/admin/category', 'CategoryController@index');
-Route::get('/admin/category/add', function () {
-    return view('admin.addCategory');
-});
+Route::get('/admin/category/add', 'CategoryController@add');
 Route::post('/admin/category/create', 'CategoryController@create');
 Route::get('/admin/category/edit/{category}', 'CategoryController@edit');
 Route::post('/admin/category/update/{category}', 'CategoryController@update');

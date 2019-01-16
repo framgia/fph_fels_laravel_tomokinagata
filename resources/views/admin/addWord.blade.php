@@ -32,7 +32,7 @@
                     <input type="radio" class="col-1 mt-2 ml-3" name="check" value="4">
                     <input type="text" class="form-control{{ $errors->has('5') ? ' is-invalid' : '' }} mb-4 col-10" name="5" value="{{ old('5') }}" required>
                     <input type="radio" class="col-1 mt-2 ml-3" name="check" value="5">
-                    <button type="submit" class="btn btn-primary col-10">Submit</button> 
+                    <button type="submit" class="btn btn-primary col-10">Submit</button>
                 </div>
             </div>
         </div>

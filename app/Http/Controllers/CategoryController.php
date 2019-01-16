@@ -14,6 +14,11 @@ class CategoryController extends Controller
         return view('admin.category')->with('categories', $categories);
     }
 
+    public function add()
+    {
+        return view('admin.addCategory');
+    }
+
     public function create(Request $request)
     {
         $category = new Category();

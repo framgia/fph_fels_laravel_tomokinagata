@@ -6,11 +6,10 @@
 
 @section('content')
 <div class="container">
-    <h3 class="mb-5">Categories
-    <?php $url_add = url('/admin/category/add'); ?>
-    <button class="btn btn-primary float-right" onclick="location.href='<?= $url_add; ?>'">Add new category</button>
+    <h3 class="mb-5">
+        Categories
+        <a href="{{ action('CategoryController@add') }}"><button class="btn btn-primary float-right">Add new category</button></a>
     </h3>
-
     <section>
         <table class="table table-hover">
             <thead>

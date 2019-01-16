@@ -15,6 +15,11 @@ class Category extends Model
        return $this->hasMany('App\Word');
     }
 
+    public function lessons()
+    {
+       return $this->hasMany('App\Lesson');
+    }
+
     public function getCategories($number)
     {
         return $this->orderBy('id', 'DESC')->paginate($number);
