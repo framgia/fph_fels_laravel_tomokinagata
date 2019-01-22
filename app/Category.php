@@ -10,6 +10,12 @@ class Category extends Model
     
     public $timestamps = false;
 
-
-
+    public function create($request)
+    {
+        $category = new Category();
+        $category->title = $request->title;
+        $category->description = $request->description;
+        $category->save();
+        return $category;
+    }
 }

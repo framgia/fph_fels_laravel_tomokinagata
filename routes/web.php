@@ -29,7 +29,7 @@ Route::get('/admin_add_category', function () {
     return view('admin.addCategory');
 });
 
-//temporary rooting for admin to add category 
+//temporary routing for admin to add category 
 Route::post('/create_category', 'CategoryController@create');
 
 

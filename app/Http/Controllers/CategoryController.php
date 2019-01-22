@@ -24,10 +24,8 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        $category = new Category();
-        $category->title = $request->title;
-        $category->description = $request->description;
-        $category->save();
+        $model = new Category();
+        $model->create($request);
         return view('admin.addCategory');
     }
 
