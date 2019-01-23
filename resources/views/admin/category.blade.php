@@ -5,9 +5,6 @@
 @section('admin_mark', ' | Admin')
 
 @section('content')
-<style>
-</style>
-
 <div class="container">
     <h3 class="mb-5">Categories
     <?php $url_add = url('/admin/category/add'); ?>
@@ -22,21 +19,19 @@
 
           <tbody>
               @foreach ($categories as $category)
-                  <?php
-                      $url_edit = action('CategoryController@edit', $category);
-                      $url_delete = action('CategoryController@delete', $category);
-                  ?>
                   <tr>
                       <td><a href="#">{{$category->title}}</a></td>
                       <td>{{$category->description}}</td>
-                      <td><a href="#">Add word</a> | <a href="<?= $url_edit; ?>">Edit</a> | <a href="<?= $url_delete; ?>"  onclick="return confirm('Are you sure?')">Delete</a></td>
+                      <td>
+                          <a href="#">Add word</a> | 
+                          <a href="{{ action('CategoryController@edit', $category) }}">Edit</a> | 
+                          <a href="{{ action('CategoryController@delete', $category)  }}"  onclick="return confirm('Are you sure?')">Delete</a>
+                      </td>
                   </tr>
                @endforeach
           </tbody>
         </table>
         <span class="float-right">{{ $categories->links() }}</span>
     </section>
-
 </div>
-<script src="/js/main.js"></script>
 @endsection

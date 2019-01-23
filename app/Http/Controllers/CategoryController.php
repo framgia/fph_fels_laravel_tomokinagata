@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category = new Category;
-        $categories = $category->index(5);
+        $categories = $category->getCategories(5);
         return view('admin.category')->with('categories', $categories);
     }
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $category->updateCategory($request, $category);
+        $category->updateCategory($request);
         return redirect('/admin/category')->with('success', 'The category is updated successfully.');
     }
 

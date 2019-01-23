@@ -10,10 +10,9 @@ class Category extends Model
     
     public $timestamps = false;
 
-    public function index($number)
+    public function getCategories($number)
     {
-        $categories = $this->orderBy('id', 'DESC')->paginate($number);
-        return $categories;
+        return $this->orderBy('id', 'DESC')->paginate($number);
     }
 
     public function create($request)
@@ -24,11 +23,11 @@ class Category extends Model
         return $this;
     }
 
-    public function updateCategory($request, $category)
+    public function updateCategory($request)
     {
-        $category->title = $request->title;
-        $category->description = $request->description;
-        $category->save();
-        return $category;
+        $this->title = $request->title;
+        $this->description = $request->description;
+        $this->save();
+        return $this;
     }
 }
