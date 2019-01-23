@@ -12,10 +12,9 @@ class Category extends Model
 
     public function create($request)
     {
-        $category = new Category();
-        $category->title = $request->title;
-        $category->description = $request->description;
-        $category->save();
-        return $category;
+        $this->title = $request->title;
+        $this->description = $request->description;
+        $this->save();
+        return $this;
     }
 }
