@@ -31,7 +31,7 @@ Route::get('/admin/category', 'CategoryController@index');
 Route::post('/admin/category/create', 'CategoryController@create');
 Route::get('/admin/category/edit/{category}', 'CategoryController@edit');
 Route::post('/admin/category/update/{category}', 'CategoryController@update');
-Route::get('/admin/category/{category}', 'CategoryController@delete');
+Route::get('/admin/category/delete/{category}', 'CategoryController@delete');
 
 
 

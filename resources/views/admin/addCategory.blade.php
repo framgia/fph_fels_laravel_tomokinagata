@@ -14,7 +14,7 @@
             <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }} mb-4 col-12" name="title" value="{{ old('title') }}" required>
             <h5>Description</h5>
             <textarea id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }} mb-4 col-12" name="description" rows="8" required>{{ old('description') }}</textarea>
-            <button type="submit" class="btn btn-primary w-100">submit</button> 
+            <button type="submit" class="btn btn-primary w-100">Submit</button> 
         </form>
     <div>
 </div>
