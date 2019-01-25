@@ -10,7 +10,20 @@ class Category extends Model
     
     public $timestamps = false;
 
+    public function getCategories($number)
+    {
+        return $this->orderBy('id', 'DESC')->paginate($number);
+    }
+
     public function create($request)
+    {
+        $this->title = $request->title;
+        $this->description = $request->description;
+        $this->save();
+        return $this;
+    }
+
+    public function updateCategory($request)
     {
         $this->title = $request->title;
         $this->description = $request->description;
