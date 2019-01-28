@@ -21,14 +21,10 @@
                 {{csrf_field()}}
                 <input type="hidden" name="categoryId" value="{{ $word->category_id }}">
                 @foreach ($word_answers as $word_answer)
-                    <?php 
-                         $choicex = 'choice'. strval($loop->index+1);
-                         $answerIdx = 'answerId'. strval($loop->index+1);
-                    ?>
                     <div class="row">
-                        <input type="hidden" name="{{ $answerIdx }}" value="{{ $word_answer->id }}">
-                        <input type="text" class="form-control{{ $errors->has('choicex') ? ' is-invalid' : '' }} col-10 mb-4" name="{{ $choicex }}" value="{{ $word_answer->content }}" required>
-                        <input type="radio" class="col-1 mt-2 ml-3" name="check" value="{{ $choicex }}" {{ ($word_answer->correct) ? 'checked' : '' }} required>
+                        <input type="hidden" name="{{ 'id'. strval($loop->index+1) }}" value="{{ $word_answer->id }}">
+                        <input type="text" class="form-control{{ $errors->has($loop->index+1) ? ' is-invalid' : '' }} col-10 mb-4" name="{{ $loop->index+1 }}" value="{{ $word_answer->content }}" required>
+                        <input type="radio" class="col-1 mt-2 ml-3" name="check" value="{{ $loop->index+1 }}" {{ ($word_answer->correct) ? 'checked' : '' }} required>
                     </div>
                 @endforeach
                 <div class="row">

@@ -22,16 +22,16 @@
                     <h5 class="mb-0 col-2">Answer</h5>
                 </div>
                 <div class="row">
-                    <input type="text" class="form-control{{ $errors->has('choice1') ? ' is-invalid' : '' }} mb-4 col-10" name="choice1" value="{{ old('choice1') }}" required>
-                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="choice1" required>
-                    <input type="text" class="form-control{{ $errors->has('choice2') ? ' is-invalid' : '' }} mb-4 col-10" name="choice2" value="{{ old('choice2') }}" required>
-                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="choice2">
-                    <input type="text" class="form-control{{ $errors->has('choice3') ? ' is-invalid' : '' }} mb-4 col-10" name="choice3" value="{{ old('choice3') }}" required>
-                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="choice3">
-                    <input type="text" class="form-control{{ $errors->has('choice4') ? ' is-invalid' : '' }} mb-4 col-10" name="choice4" value="{{ old('choice4') }}" required>
-                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="choice4">
-                    <input type="text" class="form-control{{ $errors->has('choice5') ? ' is-invalid' : '' }} mb-4 col-10" name="choice5" value="{{ old('choice5') }}" required>
-                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="choice5">
+                    <input type="text" class="form-control{{ $errors->has('1') ? ' is-invalid' : '' }} mb-4 col-10" name="1" value="{{ old('1') }}" required>
+                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="1" required>
+                    <input type="text" class="form-control{{ $errors->has('2') ? ' is-invalid' : '' }} mb-4 col-10" name="2" value="{{ old('2') }}" required>
+                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="2">
+                    <input type="text" class="form-control{{ $errors->has('3') ? ' is-invalid' : '' }} mb-4 col-10" name="3" value="{{ old('3') }}" required>
+                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="3">
+                    <input type="text" class="form-control{{ $errors->has('4') ? ' is-invalid' : '' }} mb-4 col-10" name="4" value="{{ old('4') }}" required>
+                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="4">
+                    <input type="text" class="form-control{{ $errors->has('5') ? ' is-invalid' : '' }} mb-4 col-10" name="5" value="{{ old('5') }}" required>
+                    <input type="radio" class="col-1 mt-2 ml-3" name="check" value="5">
                     <button type="submit" class="btn btn-primary col-10">Submit</button> 
                 </div>
             </div>

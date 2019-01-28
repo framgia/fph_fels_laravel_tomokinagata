@@ -16,7 +16,7 @@
                 @foreach ($words as $word)
                     <tr>
                         <td>{{ $word->content }}</td>
-                        <td>{{ $answers->where('word_id', $word->id)->first()->content }}</td>
+                        <td>{{ $word->wordAnswers->where('correct', 1)->first()->content }}</td>
                         <td>
                             <a href="{{ action('WordController@edit', $word) }}}">Edit</a> | 
                             <a href="{{ action('WordController@delete', $word) }}" onclick="return confirm('Are you sure?')">Delete</a>

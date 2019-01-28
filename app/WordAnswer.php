@@ -10,29 +10,10 @@ class WordAnswer extends Model
 
     public $timestamps = false;
 
-    public function correctAnswers(){
-        return $this->where('correct', 1)->get();
-    }
+    protected $fillable= array('word_id', 'content', 'correct');
 
-    public function create($word_id, $content, $correct)
+    public function word()
     {
-        $this->word_id = $word_id;
-        $this->content = $content;
-        $this->correct = $correct;
-        $this->save();
-        return $this;
-    }
-
-    public function findAnswers($word)
-    {
-        return $this->where('word_id', $word->id)->get();
-    }
-
-    public function updateAnswer($content, $correct)
-    {
-        $this->content = $content;
-        $this->correct = $correct;
-        $this->save();
-        return $this;
+       return $this->belongsTo('App\Word');
     }
 }

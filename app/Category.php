@@ -10,6 +10,11 @@ class Category extends Model
     
     public $timestamps = false;
 
+    public function words()
+    {
+       return $this->hasMany('App\Word');
+    }
+
     public function getCategories($number)
     {
         return $this->orderBy('id', 'DESC')->paginate($number);

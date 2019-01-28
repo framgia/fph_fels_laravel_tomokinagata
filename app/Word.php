@@ -10,23 +10,21 @@ class Word extends Model
     
     public $timestamps = false;
 
-    public function findWords($category)
+    public function category()
     {
-        return $this->where('category_id', $category->id)->orderBy('id', 'DESC')->get();
+       return $this->belognsTo('App\Category');
     }
 
-    public function create($request)
+    public function wordAnswers()
+    {
+       return $this->hasMany('App\WordAnswer');
+    }
+
+    public function createWord($request)
     {
         $this->category_id = $request->category_id;
         $this->content = $request->word;
         $this->save();
         return $this;
     }
-    
-    public function getLatestId()
-    {
-        return $this->orderBy('id', 'DESC')->first()->id;
-    }
-
-
 }
