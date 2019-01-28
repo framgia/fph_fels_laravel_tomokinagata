@@ -12,7 +12,7 @@
                     @if ($user->avatar != NULL)
                         <img src="/storage/profile_images/{{ $user->id }}.jpg" class="w-100" style="objcet-fit:cover;">
                     @else
-                        <img src="{{ asset('img/cat.jpg') }}" class="w-100" style="max-height: 400px; max-width: 400px;">
+                        <img src="{{ asset('img/default.png') }}" class="w-100">
                     @endif
                 </div>
                 <div class="col-md-6">
