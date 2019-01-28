@@ -15,7 +15,7 @@ class UserController extends Controller
     public function delete(User $user)
     {
         $user->delete();
-        return redirect()->action('UserController@index', ['users' => User::orderBy('id', 'DESC')->paginate(20)])->with('Success', 'The user is deleted successfully.');
+        return redirect()->action('UserController@index')->with('Success', 'The user is deleted successfully.');
     }
 }
 
