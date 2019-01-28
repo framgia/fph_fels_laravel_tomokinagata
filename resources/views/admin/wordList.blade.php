@@ -18,8 +18,12 @@
                         <td>{{ $word->content }}</td>
                         <td>{{ $word->wordAnswers->where('correct', 1)->first()->content }}</td>
                         <td>
-                            <a href="{{ action('WordController@edit', $word) }}}">Edit</a> | 
-                            <a href="{{ action('WordController@delete', $word) }}" onclick="return confirm('Are you sure?')">Delete</a>
+                            <form action="{{ action('WordController@delete', $word) }}" method="post" class="form-inline">
+                                {{ method_field('delete') }}
+                                {{ csrf_field() }}
+                                <a href="{{ action('WordController@edit', $word) }}}">Edit&nbsp;</a>|
+                                <button type="submit" class="btn btn-link p-0 m-0" onclick="return confirm('Are you sure?')">&nbsp;Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
