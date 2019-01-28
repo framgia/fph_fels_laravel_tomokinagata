@@ -1,6 +1,6 @@
 @extends('layouts.profile')
 
-@section('content_left')
+@section('content_right')
 <h4 class="my-4">Words Learned</h4>
 <hr>
 <div class="row">

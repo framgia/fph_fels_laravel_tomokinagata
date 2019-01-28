@@ -1,4 +1,4 @@
-@extends('layouts.profile')
+@extends('layouts.dashboard')
 
 @section('content_right')
     <h4 class="my-4">Following</h4>

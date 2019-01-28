@@ -50,13 +50,16 @@
                             @endif
                         @else
                             <li class="nav-item dropdown mr-3">
+                               <a class="nav-link" href="{{ action('HomeController@dashboard') }}">Dashboard</a>
+                            </li>
+                            <li class="nav-item dropdown mr-3">
                                <a class="nav-link" href="{{ action('LessonController@lessonIndex') }}">Categories</a>
                             </li>
                             <li class="nav-item dropdown mr-3">
-                               <a class="nav-link" href="#">Friend list</a>
+                               <a class="nav-link" href="{{ action('ProfileController@index') }}">User list-for-user</a>
                             </li>
                             <li class="nav-item dropdown mr-3">
-                               <a class="nav-link" href="{{ action('UserController@index') }}">User list</a>
+                               <a class="nav-link" href="{{ action('UserController@index') }}">User list-for-admin</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

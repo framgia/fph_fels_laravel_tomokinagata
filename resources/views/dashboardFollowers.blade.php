@@ -1,4 +1,4 @@
-@extends('layouts.profile')
+@extends('layouts.dashboard')
 
 @section('content_right')
     <h4 class="my-4">Followers</h4>
@@ -12,7 +12,7 @@
                         <img src="{{ asset('img/default.png') }}"  style="height: 80px; width: 80px; object-fit: cover;">
                     @endif
                     <a href="{{ action('ProfileController@profile', $follower) }}">
-                        <h5 class="text-center my-2">{{ $follower->name }}</h5>
+                        <h5 class="my-2">{{ $follower->name }}</h5>
                     </a>
                 </div>
             @endforeach
