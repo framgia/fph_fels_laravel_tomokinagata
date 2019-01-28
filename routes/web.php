@@ -35,6 +35,15 @@ Route::get('/profile/{profile_user}/following', 'ProfileController@profileFollow
 Route::get('/profile/{profile_user}/{user}/follow', 'RelationshipController@follow')->name('follow');
 Route::get('/profile/{profile_user}/{user}/unfollow', 'RelationshipController@unfollow')->name('unfollow');
 
+//Profile functions for user
+Route::get('/profile/user_list', 'ProfileController@index');
+Route::get('/profile/{profile_user}', 'ProfileController@profile');
+Route::get('/profile/{profile_user}/words_leaned', 'ProfileController@profileWordsLearned');
+Route::get('/profile/{profile_user}/followers', 'ProfileController@profileFollowers');
+Route::get('/profile/{profile_user}/following', 'ProfileController@profileFollowing');
+Route::get('/profile/{profile_user}/{user}/follow', 'RelationshipController@follow')->name('follow');
+Route::get('/profile/{profile_user}/{user}/unfollow', 'RelationshipController@unfollow')->name('unfollow');
+
 //Lesson functions for user
 Route::get('/category', 'LessonController@lessonIndex');
 Route::get('/category/lesson/{category}/{page_number}/{correct}', 'LessonController@lessonAnswer')->name('lessonAnswer');
