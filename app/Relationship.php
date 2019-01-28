@@ -25,4 +25,10 @@ class Relationship extends Model
         return $this;
     }
 
+    public function activitiy()
+    {
+       return $this->hasOne('App\Activity', 'action_id');
+    }
+
+
 }

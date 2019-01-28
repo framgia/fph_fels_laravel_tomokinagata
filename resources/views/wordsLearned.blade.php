@@ -1,5 +1,3 @@
-
-
 @extends('layouts.dashboard')
 
 @section('content_right')

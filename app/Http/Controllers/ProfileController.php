@@ -15,11 +15,16 @@ class ProfileController extends Controller
 
     public function profile(User $profile_user)
     {
+        $activities = $profile_user->getActivities();
         return view('profile', [
             'user' => Auth::user(),
             'profile_user' => $profile_user,
             'count_words_learned' => $profile_user->countWordsLearned(),
-            'relation' => Auth::user()->relation($profile_user)
+            'relation' => Auth::user()->relation($profile_user),
+            'subjects' => $activities['subjects'],
+            'actions' => $activities['actions'],
+            'objects' => $activities['objects'],
+            'times' => $activities['times']
         ]);
     }
 

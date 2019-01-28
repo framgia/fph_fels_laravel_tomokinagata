@@ -7,6 +7,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Lesson;
 use App\Relationship;
+use App\User;
+use App\Category;
+use App\Activity;
 
 class User extends Authenticatable
 {
@@ -33,6 +36,11 @@ class User extends Authenticatable
     public function followings()
     {
        return $this->hasMany(Relationship::class, 'follower_id');
+    }
+
+    public function activities()
+    {
+        return $this->hasmany(Activity::class);
     }
 
     public function wordsLearned()
@@ -81,5 +89,30 @@ class User extends Authenticatable
             array_push($followings, User::find($following->followed_id));
         }
         return $followings;
+    }
+
+    public function getActivities()
+    {
+        $followings = $this->getFollowings();
+        $activities = $this->activities;
+        foreach ($followings as $following) {
+            $activities = $activities->merge($following->activities);
+        }
+        $activities = $activities->sortByDesc('id');     
+        $subjects = [];
+        $actions = [];
+        $objects = [];
+        $times = [];
+        foreach ($activities as $activity) {
+            array_push($subjects, User::find($activity->user_id));
+            array_push($actions, $activity->action_type);
+            if ($activity->action_type === 'followed') {
+                array_push($objects, User::find(Relationship::find($activity->action_id)->followed_id));
+            }else{
+                array_push($objects, Category::find(Lesson::find($activity->action_id)->category_id));
+            }
+            array_push($times, $activity->created_at);
+        }
+        return array('subjects' => $subjects, 'actions' => $actions, 'objects' => $objects, 'times' => $times);
     }
 }

@@ -26,6 +26,11 @@ class Lesson extends Model
        return $this->hasMany(LessonWord::class);
     }
 
+    public function activity()
+    {
+       return $this->hasOne('App\Activity', 'action_id');
+    }
+
     public function create($category_id, $user_id)
     {
        $this->category_id = $category_id;
