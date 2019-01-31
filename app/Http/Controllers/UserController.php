@@ -22,7 +22,7 @@ class UserController extends Controller
     }
 
     public function edit(){
-        return view('profileEdit', ['user' => User::user()]);
+        return view('profileEdit', ['user' => Auth::user()]);
     }
 
     public function store(ProfileRequest $request)
