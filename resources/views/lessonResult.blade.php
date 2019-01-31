@@ -1,8 +1,6 @@
 <?php
     //Processing user answers data to display.
-    $result = session()->get('result');
-    $success = (in_array('1', $result)) ? array_count_values($result)[1] : 0;
-    extract($result, EXTR_PREFIX_INVALID, 'answer');
+    extract($result, EXTR_PREFIX_INVALID, 'answer'); 
 ?>
 @extends ('layouts.app')
 
