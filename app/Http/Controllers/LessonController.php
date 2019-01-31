@@ -24,17 +24,16 @@ class LessonController extends Controller
     public function lessonAnswer(Category $category, $page_number, $correct)
     {    
         $words = $category->words()->get();
-        session([$category->title => null]);
 
         //In case that the lesson has no words yet.
         if (count($words) === 0) {
-            session([$category->title => 'no contents']);
+            session()->flash($category->title, 'no contents');
             return back();
         }
 
         //In case that user has already taken the lesson.
         if(count(User::find(Auth::id())->lessons->where('category_id', $category->id)) !== 0) {
-            session([$category->title => 'taken']);
+            session()->flash($category->title, 'taken');
             return back();
         }
     
