@@ -65,4 +65,5 @@ class WordController extends Controller
         $word->delete();
         return back()->with('Success', 'The word is deleted successfully.');
     }
+
 }

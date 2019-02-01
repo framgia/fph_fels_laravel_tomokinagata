@@ -18,4 +18,3 @@ class UserController extends Controller
         return redirect()->action('UserController@index')->with('Success', 'The user is deleted successfully.');
     }
 }
-

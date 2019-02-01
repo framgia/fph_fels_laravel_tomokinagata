@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown mr-3">
-                               <a class="nav-link" href="#">Categories</a>
+                               <a class="nav-link" href="{{ action('LessonController@lessonIndex') }}">Categories</a>
                             </li>
                             <li class="nav-item dropdown mr-3">
                                <a class="nav-link" href="#">Friend list</a>

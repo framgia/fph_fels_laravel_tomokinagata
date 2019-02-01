@@ -17,4 +17,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function lessons()
+    {
+       return $this->hasMany('App\Lesson');
+    }
 }
