@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Relationship extends Model
 {
@@ -14,13 +15,13 @@ class Relationship extends Model
 
     public function following() 
     {
-        $this->belogsTo('App\User', 'follower_id');
+        $this->belogsTo(User::class, 'follower_id');
         return $this;
     }
 
     public function follower() 
     {
-        $this->belogsTo('App\User', 'followed_id');
+        $this->belogsTo(User::class, 'followed_id');
         return $this;
     }
 

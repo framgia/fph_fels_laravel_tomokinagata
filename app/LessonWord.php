@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Lesson;
+use App\Word;
+use App\WordAnswer;
 
 class LessonWord extends Model
 {
@@ -16,17 +19,17 @@ class LessonWord extends Model
 
    public function lesson()
    {
-      return $this->belognsTo('App\Lesson');
+      return $this->belognsTo(Lesson::class);
    }
 
    public function word()
    {
-      return $this->belognsTo('App\Word');
+      return $this->belognsTo(Word::class);
    }
 
    public function wordAnswer()
    {
-      return $this->belognsTo('App\WordAnswer');
+      return $this->belognsTo(WordAnswer::class);
    }
 
    public function create($lesson_id, $word_id, $word_answer_id)

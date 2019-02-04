@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Lesson;
+use App\Relationship;
 
 class User extends Authenticatable
 {
@@ -21,17 +22,17 @@ class User extends Authenticatable
 
     public function lessons()
     {
-       return $this->hasMany('App\Lesson');
+       return $this->hasMany(Lesson::class);
     }
 
     public function followers()
     {
-       return $this->hasMany('App\Relationship', 'followed_id');
+       return $this->hasMany(Relationship::class, 'followed_id');
     }
 
     public function followings()
     {
-       return $this->hasMany('App\Relationship', 'follower_id');
+       return $this->hasMany(Relationship::class, 'follower_id');
     }
 
     public function wordsLearned()
