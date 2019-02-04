@@ -11,7 +11,9 @@
 |
 */
 Auth::routes();
-
+Route::get('/sample', function() {
+  return 1;
+});
 //for User
 Route::get('/', function () {
     return view('home');
