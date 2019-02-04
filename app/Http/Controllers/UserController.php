@@ -32,7 +32,7 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'avator' => $avatar
+            'avatar' => $avatar
         ]);
         return redirect('dashboard')->with('Success', 'Your account is updated successfully');
     }
