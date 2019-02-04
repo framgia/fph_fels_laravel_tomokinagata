@@ -19,17 +19,17 @@ class LessonWord extends Model
 
    public function lesson()
    {
-      return $this->belognsTo(Lesson::class);
+      return $this->belongsTo(Lesson::class);
    }
 
    public function word()
    {
-      return $this->belognsTo(Word::class);
+      return $this->belongsTo(Word::class);
    }
 
    public function wordAnswer()
    {
-      return $this->belognsTo(WordAnswer::class);
+      return $this->belongsTo(WordAnswer::class);
    }
 
    public function create($lesson_id, $word_id, $word_answer_id)

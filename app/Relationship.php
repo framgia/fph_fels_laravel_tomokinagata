@@ -15,13 +15,13 @@ class Relationship extends Model
 
     public function following() 
     {
-        $this->belogsTo(User::class, 'follower_id');
+        $this->belongsTo(User::class, 'follower_id');
         return $this;
     }
 
     public function follower() 
     {
-        $this->belogsTo(User::class, 'followed_id');
+        $this->belongsTo(User::class, 'followed_id');
         return $this;
     }
 

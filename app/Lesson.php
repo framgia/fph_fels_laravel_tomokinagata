@@ -13,12 +13,12 @@ class Lesson extends Model
 
     public function user()
     {
-       return $this->belognsTo(User::class);
+       return $this->belongsTo(User::class);
     }
 
     public function category()
     {
-       return $this->belognsTo(Category::class);
+       return $this->belongsTo(Category::class);
     }
 
     public function lessonWords()
