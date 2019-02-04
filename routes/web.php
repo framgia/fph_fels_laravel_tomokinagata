@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
 Route::get('/dashboard/wordsLearned', 'HomeController@wordsLearned');
 Route::get('/dashboard/edit', 'UserController@edit');
-Route::post('/dashboard/edit', 'UserController@store');
+Route::post('/dashboard/edit', 'UserController@update');
 
 //Lesson functions for user
 Route::get('/category', 'LessonController@lessonIndex');

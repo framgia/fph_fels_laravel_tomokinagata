@@ -25,13 +25,9 @@ class UserController extends Controller
         return view('profileEdit', ['user' => Auth::user()]);
     }
 
-    public function store(ProfileRequest $request)
+    public function update(ProfileRequest $request)
     {
-        if ($request->avatar != NULL) {
-            $avatar = $request->avatar->storeAs('public/profile_images', Auth::id() . '.jpg');
-        } else {
-            $avatar = "";
-        }
+        $avatar = $request->avatar != NULL ? $request->avatar->storeAs('public/profile_images', Auth::id() . '.jpg') : '';
         $user = Auth::user();
         $user->update([
             'name' => $request->name,

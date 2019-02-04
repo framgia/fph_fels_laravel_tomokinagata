@@ -9,7 +9,7 @@
                     <div class="card-header">Edit</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ action('UserController@store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ action('UserController@update') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group row">
                                 <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
