@@ -10,13 +10,13 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     @if ($user->avatar != NULL)
-                        <img src="{{ asset('storage/profile_images/'. $user->id. '.jpg') }}" class="w-100" style="objcet-fit:cover;">
+                        <img src="/storage/profile_images/{{ $user->id }}.jpg" class="w-100">
                     @else
-                        <img src="{{ asset('img/cat.jpg') }}" class="w-100" style="max-height: 400px; max-width: 400px;">
+                        <img src="{{ asset('img/default.png') }}" class="w-100">
                     @endif
                 </div>
-                <div class="col-md-6">
-                    <h5>{{ isset($user->name) ? $user->name : 'Guest user' }}</h5>
+                <div class="col-md-6 mb-3">
+                    <a href="#" class="text-dark"><h4>{{ isset($user->name) ? $user->name : 'Guest user' }}</h4></a>
                     <p class="colour-primary">Learned {{ count($user->lessons()->get()) }} lessons</p>
                     <p><a href="{{ action('HomeController@wordsLearned') }}">Learned {{ $learned_words }} words</a></p>
                 </div>
@@ -43,7 +43,5 @@
             </div>
         </div>    
     </div>
-
-
 </div>
 @endsection

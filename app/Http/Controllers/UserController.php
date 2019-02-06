@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    //Actions for admin
+
     public function index()
     {
         return view('admin.userList')->with('users',  User::orderBy('id', 'DESC')->paginate(20));
@@ -20,6 +22,8 @@ class UserController extends Controller
         $user->delete();
         return redirect()->action('UserController@index')->with('Success', 'The user is deleted successfully.');
     }
+
+    //Actions for user from here
 
     public function edit(){
         return view('profileEdit', ['user' => Auth::user()]);
@@ -36,5 +40,4 @@ class UserController extends Controller
         ]);
         return redirect('dashboard')->with('Success', 'Your account is updated successfully');
     }
-
 }

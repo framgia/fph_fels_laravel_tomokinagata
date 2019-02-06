@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
+use App\Category;
+use App\LessonWord;
 
 class Lesson extends Model
 {
@@ -10,17 +13,17 @@ class Lesson extends Model
 
     public function user()
     {
-       return $this->belognsTo('App\User');
+       return $this->belongsTo(User::class);
     }
 
     public function category()
     {
-       return $this->belognsTo('App\Category');
+       return $this->belongsTo(Category::class);
     }
 
     public function lessonWords()
     {
-       return $this->hasMany('App\LessonWord');
+       return $this->hasMany(LessonWord::class);
     }
 
     public function create($category_id, $user_id)

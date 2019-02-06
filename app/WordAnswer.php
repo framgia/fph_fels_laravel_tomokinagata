@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Word;
 
 class WordAnswer extends Model
 {
@@ -14,6 +15,6 @@ class WordAnswer extends Model
 
     public function word()
     {
-       return $this->belongsTo('App\Word');
+       return $this->belongsTo(Word::class);
     }
 }

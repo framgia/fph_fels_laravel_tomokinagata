@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Word;
+use App\Lesson;
 
 class Category extends Model
 {
@@ -12,12 +14,12 @@ class Category extends Model
 
     public function words()
     {
-       return $this->hasMany('App\Word');
+       return $this->hasMany(Word::class);
     }
 
     public function lessons()
     {
-       return $this->hasMany('App\Lesson');
+       return $this->hasMany(Lesson::class);
     }
 
     public function getCategories($number)
