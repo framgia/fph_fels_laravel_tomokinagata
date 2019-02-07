@@ -10,9 +10,9 @@
         <div class="col-md-5 col-xs-12">
             <div class="col-12 mb-3 text-center">
                 @if ($user->avatar != NULL)
-                    <img src="/storage/profile_images/{{ $user->id }}.jpg" style="height: 265px; width: 265px; object-fit:cover;">
+                    <img src="/storage/profile_images/{{ $user->id }}.jpg" class="avatar">
                 @else
-                    <img src="{{ asset('img/default.png') }}" style="height: 265px; width: 265px; object-fit:cover;">
+                    <img src="{{ asset('img/default.png') }}" class="avatar">
                 @endif
             </div>
             <div class="col-12 text-center mb-5">

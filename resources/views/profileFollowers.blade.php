@@ -7,9 +7,9 @@
             @foreach ($followers as $follower)
                 <div class="h-100 col-3 text-center">
                     @if ($follower->avatar != NULL)
-                        <img src="/storage/profile_images/{{ $follower->id }}.jpg"  style="height: 80px; width: 80px; object-fit: cover;">
+                        <img src="/storage/profile_images/{{ $follower->id }}.jpg" class="thumbnail_friend">
                     @else
-                        <img src="{{ asset('img/default.png') }}"  style="height: 80px; width: 80px; object-fit: cover;">
+                        <img src="{{ asset('img/default.png') }}"  class="thumbnail_friend">
                     @endif
                     <a href="{{ action('ProfileController@profile', $follower) }}">
                         <h5 class="text-center my-2">{{ $follower->name }}</h5>

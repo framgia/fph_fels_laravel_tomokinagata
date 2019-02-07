@@ -9,9 +9,9 @@
             @foreach ($profile_users as $profile_user)
                 <div class="col-xs-6 col-sm-4 col-md-3 m-0 p-0 text-center float-left">
                     @if ($profile_user->avatar != NULL)
-                        <img src="/storage/profile_images/{{ $profile_user->id }}.jpg" style="height: 120px; width: 120px; object-fit: cover;">
+                        <img src="/storage/profile_images/{{ $profile_user->id }}.jpg" class="thumbnail_userlist">
                     @else
-                        <img src="{{ asset('img/default.png') }}" style="max-height: 120px; max-width: 120px;">
+                        <img src="{{ asset('img/default.png') }}" class="thumbnail_userlist">
                     @endif
                     <a href="{{ action('ProfileController@profile', $profile_user) }}">
                         <h5 class="text-center py-2">{{ $profile_user->name }}</h5>
