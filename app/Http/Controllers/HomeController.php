@@ -2,16 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Lesson;
-use App\LessonWord;
-use App\Word;
-use App\WordAnswer;
-use App\User;
-use App\Relationship;
-use App\Category;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -28,14 +19,10 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $activities = Auth::user()->getActivities();
         return view('dashboard', [
             'user' => Auth::user(),
             'count_words_learned' => Auth::user()->countWordsLearned(),
-            'subjects' => $activities['subjects'],
-            'actions' => $activities['actions'],
-            'objects' => $activities['objects'],
-            'times' => $activities['times']
+            'activities' => Auth::user()->getActivitiesToDisplay()
         ]);
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Category;
 use App\LessonWord;
+use App\Activity;
 
 class Lesson extends Model
 {
@@ -28,7 +29,7 @@ class Lesson extends Model
 
     public function activity()
     {
-       return $this->hasOne('App\Activity', 'action_id');
+       return $this->hasOne(Activity::class, 'action_id');
     }
 
     public function create($category_id, $user_id)

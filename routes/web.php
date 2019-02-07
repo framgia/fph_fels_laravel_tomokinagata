@@ -12,7 +12,6 @@
 */
 use App\Http\Middleware\CheckProfileOrDashboard;
 
-
 Auth::routes();
 
 //Home for user
@@ -30,15 +29,6 @@ Route::post('/dashboard/edit', 'UserController@update');
 //Profile functions for user
 Route::get('/profile/user_list', 'ProfileController@index');
 Route::get('/profile/{profile_user}', 'ProfileController@profile')->middleware(CheckProfileOrDashboard::class);
-Route::get('/profile/{profile_user}/words_leaned', 'ProfileController@profileWordsLearned');
-Route::get('/profile/{profile_user}/followers', 'ProfileController@profileFollowers');
-Route::get('/profile/{profile_user}/following', 'ProfileController@profileFollowing');
-Route::get('/profile/{profile_user}/{user}/follow', 'RelationshipController@follow')->name('follow');
-Route::get('/profile/{profile_user}/{user}/unfollow', 'RelationshipController@unfollow')->name('unfollow');
-
-//Profile functions for user
-Route::get('/profile/user_list', 'ProfileController@index');
-Route::get('/profile/{profile_user}', 'ProfileController@profile');
 Route::get('/profile/{profile_user}/words_leaned', 'ProfileController@profileWordsLearned');
 Route::get('/profile/{profile_user}/followers', 'ProfileController@profileFollowers');
 Route::get('/profile/{profile_user}/following', 'ProfileController@profileFollowing');

@@ -30,9 +30,9 @@ class RelationshipController extends Controller
 
     public function unfollow(User $profile_user, User $user)
     {
-        $relation = Relationship::where('followed_id', $profile_user->id)->where('follower_id', $user->id)->first();
-        $activity = Activity::where('action_id', $relation->id)->delete();
-        $relation->delete();
+        $relationship = Relationship::findRelationship($profile_user->id, $user->id);
+        $activity = Activity::where('action_id', $relationship->id)->delete();
+        $relationship->delete();
         return back();
     }
 

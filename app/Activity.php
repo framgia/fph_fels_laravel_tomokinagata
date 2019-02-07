@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Lesson;
+use App\Relationship;
 
 class Activity extends Model
 {
@@ -17,11 +19,11 @@ class Activity extends Model
 
     public function lesson()
     {
-       return $this->belongsTo('App\Lesson', 'action_id');
+       return $this->belongsTo(Lesson::class, 'action_id');
     }
 
     public function relationship()
     {
-       return $this->belongsTo('App\Relationship', 'action_id');
+       return $this->belongsTo(Relationship::class, 'action_id');
     }
 }

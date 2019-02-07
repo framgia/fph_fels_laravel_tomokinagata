@@ -91,28 +91,29 @@ class User extends Authenticatable
         return $followings;
     }
 
-    public function getActivities()
+    public function getActivitiesToDisplay()
     {
         $followings = $this->getFollowings();
         $activities = $this->activities;
         foreach ($followings as $following) {
             $activities = $activities->merge($following->activities);
         }
-        $activities = $activities->sortByDesc('id');     
-        $subjects = [];
-        $actions = [];
-        $objects = [];
-        $times = [];
+        $activities = $activities->sortByDesc('id');
+        
+        $activitiesToDisplay = collect([]);
         foreach ($activities as $activity) {
-            array_push($subjects, User::find($activity->user_id));
-            array_push($actions, $activity->action_type);
+            $activityToDisplay = [];
+            $activityToDisplay['subject'] = $this->find($activity->user_id);
+            $activityToDisplay['action'] = $activity->action_type;
             if ($activity->action_type === 'followed') {
-                array_push($objects, User::find(Relationship::find($activity->action_id)->followed_id));
-            }else{
-                array_push($objects, Category::find(Lesson::find($activity->action_id)->category_id));
+                $activityToDisplay['object'] = $this->find((Relationship::find($activity->action_id))->followed_id);
+            } else {
+                $activityToDisplay['object'] = Category::find(Lesson::find($activity->action_id)->category_id);
             }
-            array_push($times, $activity->created_at);
+            $activityToDisplay['time'] = $activity->created_at;
+            $activitiesToDisplay = $activitiesToDisplay->concat([$activityToDisplay]);
         }
-        return array('subjects' => $subjects, 'actions' => $actions, 'objects' => $objects, 'times' => $times);
+        return $activitiesToDisplay;
     }
+
 }
