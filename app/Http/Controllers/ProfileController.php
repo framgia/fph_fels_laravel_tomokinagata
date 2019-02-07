@@ -15,10 +15,6 @@ class ProfileController extends Controller
 
     public function profile(User $profile_user)
     {
-        if ($profile_user->id == Auth::id()) {
-            return redirect ('/dashboard');
-        }
-
         return view('profile', [
             'user' => Auth::user(),
             'profile_user' => $profile_user,

@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Middleware\CheckId;
+
+
 Auth::routes();
 
 //Home for user
@@ -26,7 +29,7 @@ Route::post('/dashboard/edit', 'UserController@update');
 
 //Profile functions for user
 Route::get('/profile/user_list', 'ProfileController@index');
-Route::get('/profile/{profile_user}', 'ProfileController@profile');
+Route::get('/profile/{profile_user}', 'ProfileController@profile')->middleware(CheckId::class);
 Route::get('/profile/{profile_user}/words_leaned', 'ProfileController@profileWordsLearned');
 Route::get('/profile/{profile_user}/followers', 'ProfileController@profileFollowers');
 Route::get('/profile/{profile_user}/following', 'ProfileController@profileFollowing');
