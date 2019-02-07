@@ -25,9 +25,10 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $user = Auth::user();
-        $learned_words = $user->countWordsLearned(); 
-        return view('dashboard', ['user' => $user, 'learned_words' => $learned_words]);
+        return view('dashboard', [
+            'user' => Auth::user(),
+            'count_words_learned' => Auth::user()->countWordsLearned()
+        ]);
     }
 
     public function wordsLearned()
@@ -35,8 +36,27 @@ class HomeController extends Controller
         $words_learned = Auth::user()->wordsLearned();
         return view('wordsLearned', [
             'user' => Auth::user(),
+            'count_words_learned' => Auth::user()->countWordsLearned(),
             'words' => $words_learned['words'],
             'word_answers' => $words_learned['word_answers']
         ]);
+    }
+
+    public function followers()
+    {
+        return view('dashboardFollowers', [
+            'user' => Auth::user(),
+            'count_words_learned' => Auth::user()->countWordsLearned(),
+            'followers' => Auth::user()->getFollowers()
+            ]);
+    }
+
+    public function following()
+    {
+        return view('dashboardFollowing', [
+            'user' => Auth::user(),
+            'count_words_learned' => Auth::user()->countWordsLearned(),
+            'followings' => Auth::user()->getFollowings()
+            ]);
     }
 }

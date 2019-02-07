@@ -1,0 +1,23 @@
+.avatar {
+  height: 265px;
+  width: 265px;
+  object-fit: cover;
+}
+
+.thumbnail_activity {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.thumbnail_friend {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+
+.thumbnail_userlist {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+}

@@ -17,7 +17,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td><a href="#">{{ $user->name }}</a></td>
+                        <td><a href="{{ action('ProfileController@profile', $user) }}">{{ $user->name }}</a></td>
                         <td>{{ $user->email }}</td>
                         <td>
                             <form action="{{ action('UserController@delete', $user) }}" method="post">

@@ -8,9 +8,9 @@
         <div class="col-md-5 col-xs-12">
             <div class="col-12 mb-3 text-center">
                 @if ($profile_user->avatar != NULL)
-                    <img src="/storage/profile_images/{{ $profile_user->id }}.jpg" class="w-75" style="objcet-fit:cover;">
+                    <img src="/storage/profile_images/{{ $profile_user->id }}.jpg" class="avatar">
                 @else
-                    <img src="{{ asset('img/default.png') }}" class="w-75" style="max-height: 400px; max-width: 400px;">
+                    <img src="{{ asset('img/default.png') }}" class="avatar">
                 @endif
             </div>
             <div class="col-12 text-center mb-5">
@@ -29,16 +29,16 @@
                     </div>
                 </div>
                 @if ($relation)
-                    <a href="{{ route('follow', ['profile_user' => $profile_user, 'user' => $user]) }}"><button class="btn btn-primary w-100 mb-3">FOLLOW</button></a>
+                    <p><a href="{{ route('follow', ['profile_user' => $profile_user, 'user' => $user]) }}"><button class="btn btn-primary w-75 mb-3">FOLLOW</button></a></p>
                 @else
-                    <a href="{{ route('unfollow', ['profile_user' => $profile_user, 'user' => $user]) }}"><button class="btn btn-primary w-100 mb-3">UNFOLLOW</button></a>
+                    <p><a href="{{ route('unfollow', ['profile_user' => $profile_user, 'user' => $user]) }}"><button class="btn btn-primary w-75 mb-3">UNFOLLOW</button></a></p>
                 @endif
                 <a href="{{ action('ProfileController@profileWordsLearned', $profile_user) }}">{{ $count_words_learned }} words learned</a>
             </div>
         </div>
 
         <div class="col-md-7 col-xs-12 border">
-            @yield('content_left')         
+            @yield('content_right')         
         </div>      
     </div>
 </div>

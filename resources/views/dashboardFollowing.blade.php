@@ -1,4 +1,4 @@
-@extends('layouts.profile')
+@extends('layouts.dashboard')
 
 @section('content_right')
     <h4 class="my-4">Following</h4>
@@ -9,7 +9,7 @@
                     @if ($following->avatar != NULL)
                         <img src="/storage/profile_images/{{ $following->id }}.jpg" class="thumbnail_friend">
                     @else
-                        <img src="{{ asset('img/default.png') }}"  class="thumbnail_friend">
+                        <img src="{{ asset('img/default.png') }}" class="thumbnail_friend">
                     @endif
                     <a href="{{ action('ProfileController@profile', $following) }}">
                         <h5 class="text-center my-2">{{ $following->name }}</h5>

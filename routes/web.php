@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Middleware\CheckProfileOrDashboard;
+
+
 Auth::routes();
 
 //Home for user
@@ -18,12 +21,15 @@ Route::get('/', function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard');
-Route::get('/dashboard/wordsLearned', 'HomeController@wordsLearned');
+Route::get('/dashboard/words_learned', 'HomeController@wordsLearned');
+Route::get('/dashboard/followers', 'HomeController@followers');
+Route::get('/dashboard/following', 'HomeController@following');
 Route::get('/dashboard/edit', 'UserController@edit');
 Route::post('/dashboard/edit', 'UserController@update');
 
 //Profile functions for user
-Route::get('/profile/{profile_user}', 'ProfileController@profile');
+Route::get('/profile/user_list', 'ProfileController@index');
+Route::get('/profile/{profile_user}', 'ProfileController@profile')->middleware(CheckProfileOrDashboard::class);
 Route::get('/profile/{profile_user}/words_leaned', 'ProfileController@profileWordsLearned');
 Route::get('/profile/{profile_user}/followers', 'ProfileController@profileFollowers');
 Route::get('/profile/{profile_user}/following', 'ProfileController@profileFollowing');
