@@ -24,18 +24,27 @@ class WordController extends Controller
 
     public function create(Request $request)
     {
-        //Creating the word.
-        $word = new Word;
-        $word->createWord($request);
-
-        //Creating the answers for the word.
-        for($count=1; $count<=5; $count++) {
-            $correct = $request->check == $count ? 1 : 0;
-            $word->wordAnswers()->create([
-                'content' => $request->$count,
-                'correct' => $correct
+        for ($counter1=1; $counter1<=$request->number; $counter1++) {
+            //Creating a word.
+            $property_of_word = 'word'. $counter1;
+            $word = new Word;
+            $word = $word->create([
+                'category_id' => $request->category_id,
+                'content' => $request->$property_of_word
             ]);
+
+            //Creating answers for the word.
+            for ($counter2=1; $counter2<=5; $counter2++) {
+                $property_of_answer = $counter2+5*($counter1-1);
+                $property_of_check = 'check'. $counter1;
+                $correct = $request->$property_of_check == $property_of_answer ? 1 : 0;
+                $word->wordAnswers()->create([
+                    'content' => $request->$property_of_answer,
+                    'correct' => $correct
+                ]);
+            }
         }
+
         return redirect()->action('WordController@index', ['category' => Category::find($request->category_id)])->with('Success', 'The word is created successfully.');
     }
     
