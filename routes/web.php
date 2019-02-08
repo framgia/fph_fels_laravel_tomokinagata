@@ -12,7 +12,6 @@
 */
 use App\Http\Middleware\CheckProfileOrDashboard;
 
-
 Auth::routes();
 
 //Home for user

@@ -2,12 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Lesson;
-use App\LessonWord;
-use App\Word;
-use App\WordAnswer;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -27,7 +21,8 @@ class HomeController extends Controller
     {
         return view('dashboard', [
             'user' => Auth::user(),
-            'count_words_learned' => Auth::user()->countWordsLearned()
+            'count_words_learned' => Auth::user()->countWordsLearned(),
+            'activities' => Auth::user()->getActivitiesToDisplay()
         ]);
     }
 
@@ -48,7 +43,7 @@ class HomeController extends Controller
             'user' => Auth::user(),
             'count_words_learned' => Auth::user()->countWordsLearned(),
             'followers' => Auth::user()->getFollowers()
-            ]);
+        ]);
     }
 
     public function following()
@@ -57,6 +52,6 @@ class HomeController extends Controller
             'user' => Auth::user(),
             'count_words_learned' => Auth::user()->countWordsLearned(),
             'followings' => Auth::user()->getFollowings()
-            ]);
+        ]);
     }
 }

@@ -9,6 +9,7 @@ use App\Word;
 use App\WordAnswer;
 use App\Lesson;
 use App\LessonWord;
+use App\Activity;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,6 +83,14 @@ class LessonController extends Controller
         //Processing user answers data to display.
         $result = session()->get('result');
         $success = (in_array('1', $result)) ? array_count_values($result)[1] : 0;
+
+        //Storing activity record to activity model.
+        $activity = new Activity;
+        $activity->create([
+            'user_id' => Auth::id(),
+            'action_id' => $lesson->id,
+            'action_type' => 'learned '. $success. ' of '. count($words). ' words in'   
+        ]);
 
         return view('lessonResult')->with([
             'category' => $category,

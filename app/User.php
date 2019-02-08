@@ -7,6 +7,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Lesson;
 use App\Relationship;
+use App\User;
+use App\Category;
+use App\Activity;
 
 class User extends Authenticatable
 {
@@ -33,6 +36,11 @@ class User extends Authenticatable
     public function followings()
     {
        return $this->hasMany(Relationship::class, 'follower_id');
+    }
+
+    public function activities()
+    {
+        return $this->hasmany(Activity::class);
     }
 
     public function wordsLearned()
@@ -82,4 +90,30 @@ class User extends Authenticatable
         }
         return $followings;
     }
+
+    public function getActivitiesToDisplay()
+    {
+        $followings = $this->getFollowings();
+        $activities = $this->activities;
+        foreach ($followings as $following) {
+            $activities = $activities->merge($following->activities);
+        }
+        $activities = $activities->sortByDesc('id');
+        
+        $activitiesToDisplay = collect([]);
+        foreach ($activities as $activity) {
+            $activityToDisplay = [];
+            $activityToDisplay['subject'] = $this->find($activity->user_id);
+            $activityToDisplay['action'] = $activity->action_type;
+            if ($activity->action_type === 'followed') {
+                $activityToDisplay['object'] = $this->find((Relationship::find($activity->action_id))->followed_id);
+            } else {
+                $activityToDisplay['object'] = Category::find(Lesson::find($activity->action_id)->category_id);
+            }
+            $activityToDisplay['time'] = $activity->created_at;
+            $activitiesToDisplay = $activitiesToDisplay->concat([$activityToDisplay]);
+        }
+        return $activitiesToDisplay;
+    }
+
 }

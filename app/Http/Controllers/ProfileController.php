@@ -19,7 +19,8 @@ class ProfileController extends Controller
             'user' => Auth::user(),
             'profile_user' => $profile_user,
             'count_words_learned' => $profile_user->countWordsLearned(),
-            'relation' => Auth::user()->relation($profile_user)
+            'relation' => Auth::user()->relation($profile_user),
+            'activities' => $profile_user->getActivitiesToDisplay()
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Activity;
 
 class Relationship extends Model
 {
@@ -25,4 +26,13 @@ class Relationship extends Model
         return $this;
     }
 
+    public function activitiy()
+    {
+       return $this->hasOne(Activity::class, 'action_id');
+    }
+
+    public static function scopeFindRelationship($query, $follower_id, $followed_id)
+    {
+        return $query->where('followed_id', $follower_id)->where('follower_id', $followed_id)->first();
+    }
 }
